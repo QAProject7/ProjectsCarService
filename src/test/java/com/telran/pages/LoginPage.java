@@ -40,4 +40,19 @@ public class LoginPage extends Page {
     return this;
   }
 
+  public LoginPage fillEmailField(String text) {
+    setElementText(emailField, text);
+    return this;
+  }
+
+  public LoginPage fillPasswordField(String text) {
+    setElementText(passwordField, text);
+    return this;
+  }
+
+  public LoginPage clickOnSubmit() {
+    clickElement(submitButton);
+    return this;
+  }
+
 }
