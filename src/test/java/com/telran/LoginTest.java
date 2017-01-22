@@ -16,10 +16,10 @@ public class LoginTest extends TestNgTestBase {
 
     @Test
     public void positveLogin() {
-        loginpage.openLoginPage();
-        loginpage.fillEmailField("email@email.com");
-        loginpage.fillPasswordField("password");
-        loginpage.clickOnSubmit();
+        loginpage.openLoginPage()
+                .fillEmailField("email@email.com")
+                .fillPasswordField("password")
+                .clickOnSubmit();
 
         // Assert.assertFalse("".equals(loginpage.header.getText()));
     }
