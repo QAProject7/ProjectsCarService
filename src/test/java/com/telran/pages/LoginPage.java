@@ -16,6 +16,14 @@ public class LoginPage extends Page {
   @CacheLookup
   public WebElement header;
 
+  @FindBy(id = "exampleInputPassword1")
+  @CacheLookup
+  public WebElement passwordField;
+
+  @FindBy(id = "exampleInputEmail1")
+  @CacheLookup
+  public WebElement EmailField;
+
   public LoginPage(WebDriver driver) {
     super(driver);
     PageFactory.initElements(driver, this);
