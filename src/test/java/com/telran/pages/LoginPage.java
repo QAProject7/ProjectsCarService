@@ -16,9 +16,28 @@ public class LoginPage extends Page {
   @CacheLookup
   public WebElement header;
 
+  @FindBy(id = "exampleInputPassword1")
+  @CacheLookup
+  public WebElement passwordField;
+
+  @FindBy(id = "exampleInputEmail1")
+  @CacheLookup
+  public WebElement emailField;
+
+  @FindBy(xpath = "//form[@name='form']//button[@type='submit']")
+  @CacheLookup
+  public WebElement submitButton;
+
   public LoginPage(WebDriver driver) {
     super(driver);
+    this.PAGE_URL = "https://secure-citadel-93919.herokuapp.com/#!/viewLogin";
     PageFactory.initElements(driver, this);
 
   }
+
+  public LoginPage openLoginPage() {
+    driver.get(PAGE_URL);
+    return this;
+  }
+
 }
