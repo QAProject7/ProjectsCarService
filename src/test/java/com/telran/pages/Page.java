@@ -1,6 +1,5 @@
 package com.telran.pages;
 
-import com.telran.TestNgTestBase;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -19,6 +18,15 @@ public abstract class Page {
   public String PAGE_TITLE;
   protected WebDriver driver;
 
+  /*
+   * Constructor injecting the WebDriver interface
+   *
+   * @param webDriver
+   */
+  public Page(WebDriver driver) {
+    this.driver = driver;
+  }
+
   public void goBackBrowserButton() {
     driver.navigate().back();
   }
@@ -30,7 +38,6 @@ public abstract class Page {
   public void reloadPage() {
     driver.navigate().refresh();
   }
-
 
   public String getTitle() {
     return driver.getTitle();
@@ -58,7 +65,6 @@ public abstract class Page {
     // Assert.assertEquals(element.getAttribute("value"), text);
   }
 
-
   public void clickElement(WebElement element) {
     // Log.info("clicking on element " + element + "");
     element.click();
@@ -83,10 +89,10 @@ public abstract class Page {
     }
   }
 
-  // public void selectValueInDropdown(WebElement dropdown, String value) {
-  //   Select select = new Select(dropdown);
-  //  select.selectByValue(value);
-  // }
+  public void selectInDropdownByValue(WebElement dropdown, String value) {
+    Select select = new Select(dropdown);
+    select.selectByValue(value);
+  }
 
   // Returns label that we chose
   public String selectValueInDropdown(WebElement dropdown, String value) {
@@ -179,6 +185,7 @@ public abstract class Page {
 
     ((JavascriptExecutor) driver).executeScript(javaScript, element);
   }
+
   public void waitForElement(WebDriverWait wait, String element) {
     wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(element)));
   }
@@ -193,14 +200,6 @@ public abstract class Page {
       //  Log.info("---------ALERT------------------");
       return false;
     }
-  }
-  /*
-   * Constructor injecting the WebDriver interface
-   * 
-   * @param webDriver
-   */
-  public Page(WebDriver driver) {
-    this.driver = driver;
   }
 
 

@@ -30,4 +30,15 @@ public class RegistrationPage extends Page {
     }
 
 
+    public RegistrationPage selectCarbyText(String carmodel) {
+        clickElement(carModelDroplist);
+        selectValueInDropdownbyText(carModelDroplist, carmodel);
+        return this;
+    }
+
+    public RegistrationPage selectCarbyValue(String value) {
+        clickElement(carModelDroplist);
+        selectValueInDropdown(carModelDroplist, value);
+        return this;
+    }
 }
