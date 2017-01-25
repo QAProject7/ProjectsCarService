@@ -2,6 +2,7 @@ package com.telran;
 
 import com.telran.pages.RegistrationPage;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -9,13 +10,24 @@ public class RegistrationTest extends TestNgTestBase {
 
     private RegistrationPage registrationPage;
 
+    @BeforeClass(alwaysRun = true)
+    public void openRegPage() {
+        registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
+        registrationPage.openRegistrationPage();
+
+    }
     @BeforeMethod
     public void initPageObjects() {
-        registrationPage = PageFactory.initElements(driver, RegistrationPage.class);
+
     }
 
     @Test
-    public void positveLogin() {
+    public void RegistrationTestPositive() throws InterruptedException {
+        registrationPage.waitUntilRegPageLoaded()
+                .fillNameField("MeName")
+                .selectCarbyIndex(4);
+
+        Thread.sleep(5000);
 
         // Assert.assertFalse("".equals(loginpage.header.getText()));
     }

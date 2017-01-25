@@ -1,17 +1,14 @@
 package com.telran;
 
-import java.io.IOException;
-
-import org.openqa.selenium.WebDriver;
+import com.telran.util.PropertyLoader;
 import org.openqa.selenium.Capabilities;
-
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
 import ru.stqa.selenium.factory.WebDriverPool;
 
-import com.telran.util.PropertyLoader;
+import java.io.IOException;
 
 /**
  * Base class for TestNG-based test classes
@@ -24,7 +21,7 @@ public class TestNgTestBase {
 
   protected WebDriver driver;
 
-  @BeforeSuite
+  @BeforeSuite(alwaysRun = true)
   public void initTestSuite() throws IOException {
     baseUrl = PropertyLoader.loadProperty("site.url");
     gridHubUrl = PropertyLoader.loadProperty("grid.url");
@@ -32,11 +29,12 @@ public class TestNgTestBase {
       gridHubUrl = null;
     }
     capabilities = PropertyLoader.loadCapabilities();
+    driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
   }
 
   @BeforeMethod
   public void initWebDriver() {
-    driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
+
   }
 
   @AfterSuite(alwaysRun = true)
