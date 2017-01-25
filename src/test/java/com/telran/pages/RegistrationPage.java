@@ -1,5 +1,6 @@
 package com.telran.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -45,18 +46,22 @@ public class RegistrationPage extends Page {
 
     public RegistrationPage selectCarbyText(String carmodel) {
         clickElement(carModelDroplist);
-        selectValueInDropdownbyText(carModelDroplist, carmodel);
+        //selectValueInDropdownbyText(carModelDroplist, carmodel);
+
+        String locator = "//*[@id='exampleSelectVehicle']/*[text()='" + carmodel + "']";
+        WebElement element = driver.findElement(By.xpath(locator));
+        clickElement(element);
         return this;
     }
 
     public RegistrationPage selectCarbyValue(String value) {
         clickElement(carModelDroplist);
-        selectValueInDropdown(carModelDroplist, value);
+        // selectValueInDropdown(carModelDroplist, value);
         return this;
     }
 
     public RegistrationPage selectCarbyIndex(int value) {
-        //clickElement(carModelDroplist);
+        clickElement(carModelDroplist);
         selectValueInDropdownbyIndex(carModelDroplist, value);
         return this;
     }
