@@ -26,10 +26,10 @@ public class RegistrationTest extends TestNgTestBase {
         registrationPage.waitUntilRegPageLoaded()
                 .fillNameField("MeName");
         Thread.sleep(3000);
-        registrationPage.selectCarbyText("Cadillac");
+        registrationPage.selectCarbyText("object:90");
 
         Thread.sleep(5000);
-        registrationPage.fillNameField("MeName");
+        //registrationPage.fillNameField("MeName");
 
         // Assert.assertFalse("".equals(loginpage.header.getText()));
     }

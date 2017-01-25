@@ -1,6 +1,5 @@
 package com.telran.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -13,8 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 public class RegistrationPage extends Page {
 
 
-    @FindBy(id = "exampleSelectVehicle")
-    @CacheLookup
+    @FindBy(xpath = "//*[@id='exampleSelectVehicle']")
     public WebElement carModelDroplist;
 
     @FindBy(id = "exampleInputName")
@@ -46,11 +44,10 @@ public class RegistrationPage extends Page {
 
     public RegistrationPage selectCarbyText(String carmodel) {
         clickElement(carModelDroplist);
-        //selectValueInDropdownbyText(carModelDroplist, carmodel);
-
-        String locator = "//*[@id='exampleSelectVehicle']/*[text()='" + carmodel + "']";
-        WebElement element = driver.findElement(By.xpath(locator));
-        clickElement(element);
+        selectValueInDropdownbyText(carModelDroplist, carmodel);
+        //String locator = "//*[@id='exampleSelectVehicle']/*[text()='" + carmodel + "']";
+        //WebElement element = driver.findElement(By.xpath(locator));
+        // clickElement(element);
         return this;
     }
 
