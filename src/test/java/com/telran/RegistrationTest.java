@@ -24,10 +24,12 @@ public class RegistrationTest extends TestNgTestBase {
     @Test
     public void RegistrationTestPositive() throws InterruptedException {
         registrationPage.waitUntilRegPageLoaded()
-                .fillNameField("MeName")
-                .selectCarbyIndex(4);
+                .fillNameField("MeName");
+        Thread.sleep(3000);
+        registrationPage.selectCarbyText("Cadillac");
 
         Thread.sleep(5000);
+        registrationPage.fillNameField("MeName");
 
         // Assert.assertFalse("".equals(loginpage.header.getText()));
     }
