@@ -16,6 +16,9 @@ public class RegistrationPage extends Page {
     @CacheLookup
     public WebElement carModelDroplist;
 
+    @FindBy(id = "exampleInputName")
+    @CacheLookup
+    public WebElement nameField;
 
     public RegistrationPage(WebDriver driver) {
         super(driver);
@@ -29,11 +32,16 @@ public class RegistrationPage extends Page {
         return this;
     }
 
+
     public RegistrationPage waitUntilRegPageLoaded() {
         waitUntilIsLoaded(carModelDroplist);
         return this;
     }
 
+    public RegistrationPage fillNameField(String name) {
+        setElementText(nameField, name);
+        return this;
+    }
 
     public RegistrationPage selectCarbyText(String carmodel) {
         clickElement(carModelDroplist);
@@ -44,6 +52,12 @@ public class RegistrationPage extends Page {
     public RegistrationPage selectCarbyValue(String value) {
         clickElement(carModelDroplist);
         selectValueInDropdown(carModelDroplist, value);
+        return this;
+    }
+
+    public RegistrationPage selectCarbyIndex(int value) {
+        //clickElement(carModelDroplist);
+        selectValueInDropdownbyIndex(carModelDroplist, value);
         return this;
     }
 }

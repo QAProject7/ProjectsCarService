@@ -108,6 +108,12 @@ public abstract class Page {
 
   }
 
+  public void selectValueInDropdownbyIndex(WebElement dropdown, int value) {
+    Select oSelect = new Select(dropdown);
+    oSelect.selectByIndex(value);
+
+  }
+
   public boolean verifyElementIsPresent(WebElement element) {
     try {
       element.getTagName();
