@@ -19,9 +19,14 @@ public class RegistrationPage extends Page {
 
     public RegistrationPage(WebDriver driver) {
         super(driver);
-        this.PAGE_URL = "https://secure-citadel-93919.herokuapp.com/#!/viewLogin";
+        this.PAGE_URL = "https://secure-citadel-93919.herokuapp.com/#!/registrationClient";
         PageFactory.initElements(driver, this);
 
+    }
+
+    public RegistrationPage openRegistrationPage() {
+        driver.get(PAGE_URL);
+        return this;
     }
 
     public RegistrationPage waitUntilRegPageLoaded() {
