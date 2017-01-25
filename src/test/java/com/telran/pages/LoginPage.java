@@ -28,6 +28,11 @@ public class LoginPage extends Page {
   @CacheLookup
   public WebElement submitButton;
 
+  @FindBy(xpath = "//*[@id='ng-view']//h1")
+  @CacheLookup
+  public WebElement LoginHeader;
+
+
   public LoginPage(WebDriver driver) {
     super(driver);
     this.PAGE_URL = "https://secure-citadel-93919.herokuapp.com/#!/viewLogin";
@@ -53,6 +58,10 @@ public class LoginPage extends Page {
   public LoginPage clickOnSubmit() {
     clickElement(submitButton);
     return this;
+  }
+
+  public boolean IsOnLoginPage() {
+    return exists(LoginHeader);
   }
 
 }

@@ -104,7 +104,7 @@ public abstract class Page {
 
   public void selectValueInDropdownbyText(WebElement dropdown, String value) {
     Select select = new Select(dropdown);
-    select.selectByVisibleText(value);
+    select.selectByValue(value);
 
   }
 
