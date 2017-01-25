@@ -2,6 +2,7 @@ package com.telran;
 
 import com.telran.pages.RegisterClientPage;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -12,23 +13,28 @@ public class RegisterMyTest extends TestNgTestBase {
 
     private RegisterClientPage regPage;
 
-    @BeforeMethod
+    // @BeforeClass
+    @BeforeMethod   //повторяется кажды раз
     public void initPageObjects() {
         regPage = PageFactory.initElements(driver, RegisterClientPage.class);
+        regPage.openRegPage();
     }
 
     @Test
     public void regTest() throws InterruptedException {
-        regPage.openLoginPage()
+        regPage.openRegPage()
+                .waitUntilLoad()
                 .fillName("Benya")
-                .fillVehicle();
-        Thread.sleep(500);
-        regPage.fillModel()
-                .fillYear("1945")
+//                .selectCarbyText("Audi")
+                .selectCarbyValue("object:32");
+        Thread.sleep(2000);
+        regPage.fillYear("1945")
                 .fillVol("1.9")
-                .fillEmail("benya@mail.com");
-        Thread.sleep(50000);
-//                .clickSubmit();
+                .fillEmail("benya@mail.com")
+//        Thread.sleep(5000);
+                .clickSubmit();
+        Thread.sleep(3000);
+        Assert.assertFalse(regPage.isOnLoginPage());
     }
 
 

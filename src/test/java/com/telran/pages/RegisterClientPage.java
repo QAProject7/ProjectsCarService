@@ -16,6 +16,10 @@ public class RegisterClientPage extends Page {
     @CacheLookup
     public WebElement header;
 
+    @FindBy(xpath = "//*[contains(text(), 'Registration Client')]")
+    @CacheLookup
+    public WebElement regitrationHeader;
+
     @FindBy(id = "exampleSelectVehicle")
     @CacheLookup
     public WebElement carBrandDropdown;
@@ -56,60 +60,73 @@ public class RegisterClientPage extends Page {
     @CacheLookup
     public WebElement vehicleBrand;
 
-
     public RegisterClientPage(WebDriver driver) {
         super(driver);
         this.PAGE_URL = "https://secure-citadel-93919.herokuapp.com/#!/registrationClient";
         PageFactory.initElements(driver, this);
     }
 
-    public RegisterClientPage waitUntilLoade() {
+    public RegisterClientPage waitUntilLoad() {
         waitUntilIsLoaded(carBrandDropdown);
         return this;
     }
 
-    public RegisterClientPage openLoginPage() {
+    public RegisterClientPage openRegPage() {
         driver.get(PAGE_URL);
         return this;
     }
-
     public RegisterClientPage fillName(String text) {
         setElementText(nameField, text);
         return this;
     }
-
     public RegisterClientPage fillEmail(String text) {
         setElementText(email, text);
         return this;
     }
-
     public RegisterClientPage fillVehicle() {
         clickElement(carBrandDropdown);
         clickElement(vehicleBrand);
         return this;
     }
-
     public RegisterClientPage fillModel() {
         clickElement(selectModelDropdown);
         clickElement(vehicleModel);
         return this;
     }
-
     //***********************//
     public RegisterClientPage fillYear(String year) {
         clickElement(yearField);
         yearField.sendKeys(year);
         return this;
     }
-
     public RegisterClientPage fillVol(String vol) {
         clickElement(volume);
         volume.sendKeys(vol);
         return this;
     }
 
-    public RegisterClientPage presSubmit() {
+    public RegisterClientPage clickSubmit() {
         clickElement(submitBtn);
         return this;
+    }
+
+    //    public RegisterClientPage clickonCarListDropdown () {
+//        clickElement(carBrandDropdown);
+//        return this;
+//    }
+    public RegisterClientPage selectCarbyText(String carmodel) {
+        clickElement(carBrandDropdown);
+        selectValueInDropdownbyText(carBrandDropdown, carmodel);
+        return this;
+    }
+
+    public RegisterClientPage selectCarbyValue(String value) {
+//        clickElement(carBrandDropdown);
+        selectValueInDropdown(carBrandDropdown, value);
+        return this;
+    }
+
+    public boolean isOnLoginPage() {
+        return exists(regitrationHeader);
     }
 }
