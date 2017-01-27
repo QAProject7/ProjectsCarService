@@ -25,7 +25,7 @@ public class RegClientTolTest extends TestNgTestBase {
         regClientPage.fillClientName("testTol");
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         regClientPage.selectCarVendor("AC");
-        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         regClientPage.waitUntilModelDropListLoaded();
         regClientPage.selectCarModel("Ace");
         regClientPage.fillYearCar("2012");

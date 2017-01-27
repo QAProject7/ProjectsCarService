@@ -54,8 +54,8 @@ public class RegClientTolPage extends Page {
         return this;
     }
     public RegClientTolPage selectCarModel(String model){
-        clickElement(carModelDroplist);
-        selectValueInDropdownbyText(carModelDroplist, model);
+        //clickElement(carModelDroplist);
+        selectValueInDropdownbyValue(carModelDroplist, model);
         return this;
     }
     public RegClientTolPage fillClientName(String clientName){
