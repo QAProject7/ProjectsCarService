@@ -5,8 +5,11 @@ import com.telran.pages.RegMasterAndreyPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Andrey on 28.01.2017.
@@ -22,6 +25,7 @@ public class RegMasterAndreyTest {
         System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\geckodriver.exe");
         driver = new FirefoxDriver();
         regMasterPage = PageFactory.initElements(driver, RegMasterAndreyPage.class);
+        loginpage = PageFactory.initElements(driver, LoginPage.class);
 
     }
 
@@ -52,8 +56,8 @@ public class RegMasterAndreyTest {
        // regMasterPage.clickSelectFileButton();
         //regMasterPage.clickAddFileButton();
         regMasterPage.clickSubmitButton();
-
-
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        Assert.assertTrue(loginpage.IsOnLoginPage(), "Is not on Login Page");
 
     }
 
