@@ -6,6 +6,8 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Random;
+
 /**
  * Author: Anatoly Katz
  */
@@ -27,8 +29,9 @@ public class RegClientTolPage extends Page {
     private WebElement addButton;
     @FindBy(id="exampleInputEmail1")
     private WebElement email1InputBox;
-    @FindBy(xpath = "//button[@class='btn btn-default'][@type='submit']")
-    private WebElement submitButton;
+
+    @FindBy(xpath = "//form[@ng-submit='addClient()']//button[@class='btn btn-default'][@type='submit']")
+    public WebElement submitRegClientButton;
 
     public RegClientTolPage(WebDriver driver) {
         super(driver);
@@ -49,7 +52,7 @@ public class RegClientTolPage extends Page {
         return this;
     }
     public RegClientTolPage selectCarVendor(String vendor){
-        clickElement(carVendorDroplist);
+        //clickElement(carVendorDroplist);
         selectValueInDropdownbyText(this.carVendorDroplist, vendor);
         return this;
     }
@@ -79,7 +82,12 @@ public class RegClientTolPage extends Page {
         return this;
     }
     public RegClientTolPage clickSubmitButton(){
-        clickElement(submitButton);
+        clickElement(this.submitRegClientButton);
         return this;
     }
+    public static String getRandomEmail(){
+        Random gen = new Random();
+        return "carClient" + gen.nextInt(100) + "@yopmail.com";
+    }
 }
+

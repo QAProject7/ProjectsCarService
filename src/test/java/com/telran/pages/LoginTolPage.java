@@ -67,7 +67,7 @@ public class LoginTolPage extends Page {
     }
 
     public LoginTolPage clickLoginSubmit(){
-        clickElement(submitButton);
+        clickElement(this.submitButton);
         return this;
     }
 
