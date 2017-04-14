@@ -9,7 +9,10 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+<<<<<<< HEAD
 .gitignore
+=======
+>>>>>>> refs/remotes/yacov/master
 
 # Exclude maven wrapper
 !/.mvn/wrapper/maven-wrapper.jar
@@ -32,7 +35,11 @@ hs_err_pid*
 ### Example user template template
 ### Example user template
 
+<<<<<<< HEAD
 #  IntelliJ project files
+=======
+# IntelliJ project files
+>>>>>>> refs/remotes/yacov/master
 .idea
 *.iml
 out

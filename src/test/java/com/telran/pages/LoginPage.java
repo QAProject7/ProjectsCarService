@@ -16,6 +16,7 @@ public class LoginPage extends Page {
   @CacheLookup
   public WebElement header;
 
+<<<<<<< HEAD
   @FindBy(id = "exampleInputPassword1")
   @CacheLookup
   public WebElement passwordField;
@@ -38,6 +39,11 @@ public class LoginPage extends Page {
     this.PAGE_URL = "https://secure-citadel-93919.herokuapp.com/#!/viewLogin";
     PageFactory.initElements(driver, this);
 
+=======
+  public LoginPage(WebDriver driver) {
+    super(driver);
+    PageFactory.initElements(driver, this);
+>>>>>>> refs/remotes/yacov/master
   }
 
   public LoginPage openLoginPage() {
